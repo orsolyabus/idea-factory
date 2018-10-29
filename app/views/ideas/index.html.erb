@@ -1,5 +1,6 @@
 <% @ideas.each do |i| %>
   <h3><%= link_to i.title, idea_path(i) %></h3>
   <p><%= i.description %></p>
+  <small>By <%= i.user&.name%></small>
   <hr>
 <% end %>

@@ -14,9 +14,19 @@
       <nav class="navbar navbar-expand navbar-primary bg-light">
         <%= link_to 'Ideas Factory', root_path , class: "navbar-brand"%>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item mr-2">
             <%= link_to 'New Idea', new_idea_path %>
           </li>
+          <% if session[:user_id]%>
+            Hello <%= current_user.name %>
+            <li class="nav-item ml-2">
+              <%= link_to 'Sign out', sessions_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="nav-item ml-2">
+              <%= link_to 'Sign in', new_sessions_path %>
+            </li>
+           <% end %> 
         </ul>
       </nav>
     </header>
