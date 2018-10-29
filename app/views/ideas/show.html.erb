@@ -1,0 +1,9 @@
+<h2><%= @idea.title%></h2>
+
+<p><%= @idea.description%></p>
+<div>
+<%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-outline-primary"%>
+<%= link_to "Delete", idea_path(@idea), method: :delete, data: {confirm: "are you shure?"} , class: "btn btn-outline-danger"%> 
+</div>
+
+ 

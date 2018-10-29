@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="">
+      <nav class="navbar navbar-expand navbar-primary bg-light">
+        <%= link_to 'Ideas Factory', root_path , class: "navbar-brand"%>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to 'New Idea', new_idea_path %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="p-4">
+      <%= yield %>
+    </main>
   </body>
 </html>
