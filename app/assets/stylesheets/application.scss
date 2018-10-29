@@ -12,3 +12,14 @@
  *
  */
  @import "bootstrap";
+
+ .hidden {
+  display: none;
+}
+
+.custom-header {
+  display: inline-block;
+}
+.plus {
+  background-image: url(/public/plus.jpg);
+}

@@ -1,6 +1,18 @@
-<% @ideas.each do |i| %>
-  <h3><%= link_to i.title, idea_path(i) %></h3>
-  <p><%= i.description %></p>
-  <small>By <%= i.user&.name%></small>
-  <hr>
-<% end %>
+
+  <% @ideas.each do |i| %>
+  <div class="idea">
+    <div class="d-flex">
+      <div>
+        <img id="plus" src="plus.jpg" class="inline" width="30" >
+      </div>
+      <div>
+        <h3 class="custom_header"><%= link_to i.title, idea_path(i) %></h3>
+      </div>
+    </div>
+    
+    <p class="hidden"><%= i.description %></p>
+    <small>By <%= i.user&.name%></small>
+    <hr>
+  </div> 
+  <% end %>
+</div>

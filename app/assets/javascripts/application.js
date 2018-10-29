@@ -16,3 +16,14 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+document.addEventListener("click", event => {
+  const plus = event.target.closest("#plus");
+  if (plus){
+    const idea = plus.closest(".idea")
+    // plus.src = "minus.png"
+    const desc = idea.querySelector("p")
+    desc.classList.toggle("hidden")
+  }
+
+})
