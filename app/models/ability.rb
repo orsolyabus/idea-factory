@@ -18,5 +18,9 @@ class Ability
       idea.user == user
     end
 
+    can(:delete, Review) do |review|
+      review.user == user
+    end
+    
   end
 end

@@ -8,4 +8,27 @@
   </div>
 <% end %>
 
- 
+<%= form_for([@idea, @review]) do |f|%>
+  <div class="form-group mt-42">
+    <%= f.text_area(
+      :body,
+      cols: 60,
+      rows: 5,
+      placeholder: "What are your thoughts?",
+      class: "form-control" )%>
+  </div>
+
+  <%= f.submit class: "btn btn-outline-primary" %>
+<% end %>
+
+<ul>
+  <% @reviews.each do |r|%>
+    <li><%= r.body%>
+    <br>
+    By <%= r.user.name%>
+    <% if can? :delete, r %>
+      <%= link_to "Delete", idea_review_path(@idea, r), method: :delete, class: "btn btn-outline-danger btn-sm"%> 
+    <% end %>
+    </li>
+  <% end %>
+</ul>
