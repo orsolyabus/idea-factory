@@ -15,7 +15,7 @@ class Ability
     alias_action(:update, :delete, :edit, to: :modify)
 
     can(:modify, Idea) do |idea|
-      idea.user == current_user
+      idea.user == user
     end
 
   end

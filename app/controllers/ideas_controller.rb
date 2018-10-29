@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_idea, only: [:show, :edit, :update, :destroy]
+  before_action :authorize!, only: [:edit, :update, :destroy]
 
   def new
     @idea = Idea.new
@@ -16,12 +18,10 @@ class IdeasController < ApplicationController
   end
 
   def show
-    @idea = Idea.find params[:id]
   end
 
   def destroy
-    idea = Idea.find params[:id]
-    idea.destroy
+    @idea.destroy
     redirect_to ideas_path
   end
 
@@ -30,11 +30,9 @@ class IdeasController < ApplicationController
   end
 
   def edit
-    @idea = Idea.find params[:id]
   end
 
   def update
-    @idea = Idea.find params[:id]
     if @idea.update idea_params
       redirect_to idea_path(@idea)
     else
@@ -48,5 +46,11 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title, :description)
   end
     
+  def find_idea
+    @idea = Idea.find params[:id]
+  end
 
+  def authorize!
+   redirect_to root_path, alert: "access denied" unless can? :modify, @idea
+  end
 end
